@@ -36,7 +36,7 @@ export class BlogService {
     this.http.get(this.baseURL)
     .subscribe(Response => {
       this.list = Object.values(Response);
-      console.log(Response);
+      //console.log(Response);
       });
       //this.temp.forEach(b => { this.list.push(b);
       // this.temp = Response;

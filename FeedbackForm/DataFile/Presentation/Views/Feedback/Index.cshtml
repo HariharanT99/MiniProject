@@ -1,0 +1,234 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Feedback";
+}
+<link href="~/css/Form.css" rel="stylesheet" />
+
+<div class="card">
+    <div class="card-body">
+        <form class="form" id="feedbackform">
+            <div class="row form-title text-center">
+                <h4>Customer Satisfactory Feedback</h4>
+            </div>
+
+            <div class="row sub-card">
+                <div class="card">
+                    Product Information
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="col-form-label">
+                        Category *
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" id="category" aria-label="Default select example">
+                    </select>
+                    <span class="error text-danger" id="cat-error">Category is required</span>
+                </div>
+
+                <div class="col-md-2">
+                    <label class="col-form-label">
+                        Product *
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" id="product" aria-label="Default select example">
+                        <option selected value=""></option>
+                    </select>
+                    <span class="error text-danger" id="prod-error">Product is required</span>
+                </div>
+            </div>
+
+            <div class="row">   
+                <div class="col-md-4">
+                    <label class="col-form-label">
+                        Overall, how satisfied were you with the product/service? *
+                    </label>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="ratingRadioOptions" id="vsat" value="1">
+                        <label class="form-check-label" for="inlineRadio1">Very Satisfied</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="ratingRadioOptions" id="sat" value="2">
+                        <label class="form-check-label" for="inlineRadio2">Satisfied</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="ratingRadioOptions" id="neut" value="3">
+                        <label class="form-check-label" for="inlineRadio2">Neutral</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="ratingRadioOptions" onclick="ShowUnsatisfiedComment()" id="unsat" value="4">
+                        <label class="form-check-label" for="inlineRadio2">Unsatisfied</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="ratingRadioOptions" onclick="ShowUnsatisfiedComment()" id="vunsat" value="5">
+                        <label class="form-check-label" for="inlineRadio2">Very Unsatisfied</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="ratingRadioOptions" id="n/a" value="6">
+                        <label class="form-check-label" for="inlineRadio2">N/A</label>
+                    </div>
+                    <span class="error text-danger" id="sat-error">Rating is required</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="col-form-label">
+                        Which of the following category have you purchased in the last 2 months. Please
+                        check all that apply.
+                    </label>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="prod" id="airconditioner" value="Air Conditioner">
+                        <label class="form-check-label" for="inlineCheckbox1">Air Conditioner</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="prod" id="tv" value="TV">
+                        <label class="form-check-label" for="inlineCheckbox2">TV</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="prod" id="mobile" value="Mobile">
+                        <label class="form-check-label" for="inlineCheckbox2">Mobile</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="col-form-label">
+                        What do you like about the product/service? *
+                    </label>
+                </div>
+                <div class="col-md-8">
+                    <textarea class="form-control" id="pros"></textarea>
+                    <span class="error text-danger" id="pro-error">Comment is required</span>
+                </div>
+            </div>
+
+
+            @*User Info*@
+            <div class="row sub-card">
+                <div class="card">
+                    User Information
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-form-label">
+                    Name *
+                </label>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <select class="form-select categorydd" aria-label="Default select example" id="nametitle">
+                        <option selected value="">Title *</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                    </select>
+                    <span class="error text-danger" id="title-error">Tile is required</span>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" id="name" placeholder="First Name *" />
+                    <span class="error text-danger" id="name-error">Name is required</span>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control" id="initial" placeholder="Intials *" />
+                    <span class="error text-danger" id="initial-error">Initial is required</span>
+                </div>
+
+                <div class="row">
+                    <input class="form-control" id="email" placeholder="Email *" />
+                    <span class="error text-danger" id="email-error">Email Name is required</span>
+                </div>
+
+                <div class="row">
+                    <input class="form-control" id="street1" placeholder="Street Address *" />
+                    <span class="error text-danger" id="street-error">Street Name is required</span>
+                </div>
+
+                <div class="row">
+                    <input class="form-control" id="street2" placeholder="Street Address Line 2" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <input class="form-control" id="city" placeholder="City *" />
+                        <span class="error text-danger" id="city-error">City Name is required</span>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" id="region" placeholder="Region *" />
+                        <span class="error text-danger" id="reg-error">Region Name is required</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <input class="form-control" type="number" id="postal" placeholder="Zip Code/Postal *" />
+                        <span class="error text-danger" id="zip-error">Zip code is required</span>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-select" id="country" aria-label="Default select example">
+                            <option class="selected" selected value=""> Country *</option>
+                            <option value="India">India</option>
+                            <option value="China">China</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Canada">Canada</option>
+                        </select>
+                        <span class="error text-danger" id="country-error">Country is required</span>
+                    </div>
+                </div>
+
+                @*Unsatisfactory*@
+                <div class="row sub-card">
+                    <div class="card">
+                        More about unsatisfactory
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-form-label">
+                        Reason for unsatisfaction
+                    </label>
+                </div>
+
+                <div class="row">
+                    <textarea class="form-control" name="con" id="cons"></textarea>
+                </div>
+
+                <div class="row">
+                    Note: pdf/png format
+                    <input class="form-control form-control-lg" id="fileinput" type="file">
+                    <span class="error text-danger" id="file-error">Upload file in pdf format or Png format and size less than 500kb</span>
+                </div>
+
+                <div class="row justify-content-center button">
+                    <div class="col-md-2">
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" id="resetbtn" class="btn btn-danger">Reset</button>
+                            <button type="button" id="submitbtn" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="~/js/FormValidation.js"></script>
+
+<script src="~/js/FormAjax.js"></script>

@@ -13,8 +13,8 @@ export class CommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.refreshList();
-    console.log("Comments");
-    console.log(this.service.list); 
+    //console.log("Comments");
+    //console.log(this.service.list); 
   }
 
 }

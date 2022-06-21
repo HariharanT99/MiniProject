@@ -2,8 +2,10 @@
 
 <ul class="list-group mt-2" *ngFor="let blog of service.list">
     <div *ngIf="blog.blogId == service.id">
-        <li class="list-group-item mb-sm-2 hover-cursor" *ngFor="let comment of blog.comment">
-            {{comment.comment}}
-        </li>
+        <div *ngFor="let comment of blog.comment">
+            <li class="list-group-item mb-sm-2 hover-cursor">
+                {{comment.comment}}
+            </li>
+        </div>
     </div>
 </ul>

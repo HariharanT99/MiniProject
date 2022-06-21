@@ -1,5 +1,6 @@
 ﻿using Blog.DataAccess.Data;
 using Blog.Models;
+using Blog.Models.ViewModel;
 using Blog.DataAccess.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -75,7 +76,10 @@ namespace Blog.Controllers
             {
                 existingBlog.BlogTitle = blog.BlogTitle;
                 existingBlog.BlogContent = blog.BlogContent;
-                existingBlog.Comment = blog.Comment; 
+                if (blog.Comment != null)
+                {
+                    existingBlog.Comment = (ICollection<Comments>)blog.Comment;
+                }
 
                 _db.Save();
             }

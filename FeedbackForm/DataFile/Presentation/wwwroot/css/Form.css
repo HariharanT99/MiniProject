@@ -1,0 +1,43 @@
+﻿body {
+    color: #808080;
+}
+
+.form-title{
+    color: #635c5c;
+}
+form {
+    padding: 5px 15px 5px 15px;
+}
+
+.row{
+    margin-top: 15px;
+}
+
+.card {
+    border-radius: 30px;
+}
+
+.btn{
+    border-radius: 50px;
+    width: 150px;
+}
+
+.selected {
+    color: #808080;
+}
+
+.sub-card .card {
+    width: 100%;
+    min-height: 50px;
+    justify-content: center;
+    overflow-y: hidden;
+    color: #635c5c;
+    background-color: #cac9c9;
+    box-shadow: 3px 5px 10px #373434;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

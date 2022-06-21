@@ -15,7 +15,7 @@ export class EditBlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.refreshList();
-    console.log(this.service.id)
+    //console.log(this.service.id)
     this.service.list.forEach(blog => {
       if(blog.blogId == this.service.id)
       {

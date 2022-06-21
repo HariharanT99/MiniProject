@@ -59,10 +59,10 @@ export class AddCommentComponent implements OnInit {
     )
   }
 
-  onComment(cmt: string)
+  onComment(ct: string)
   {
-    let cmtObj: {commentId: number, comment: string}[] = [{commentId: 0, comment: cmt}];
-    this.service.formData.Comments = cmtObj; 
+    let cmtObj: {commentId: number, comment: string}[] = [{commentId: 0, comment: ct}];
+    this.service.formData.Comment = cmtObj;
   }
 
 }
